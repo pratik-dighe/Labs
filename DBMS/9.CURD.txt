@@ -1,0 +1,113 @@
+test> use test
+already on db test
+test> use db
+switched to db db
+db> use harsh
+switched to db harsh
+harsh> db.harsh.createCollection("table");
+TypeError: db.harsh.createCollection is not a function
+harsh> db.harsh.createCollection("table")
+TypeError: db.harsh.createCollection is not a function
+harsh> harsh.createCollection("table1")
+ReferenceError: harsh is not defined
+harsh> db.createCollection("MyCollection)
+Uncaught:
+SyntaxError: Unterminated string constant. (1:20)
+
+> 1 | db.createCollection("MyCollection)
+    |                     ^
+  2 |
+
+harsh> db.createCollection("MyCollection")
+{ ok: 1 }
+harsh> db.MyCollection.insertMany([{name:'Harshal',roll:3},{name:'Harsh',roll:4},{name:'karan',roll:5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("654a46be9ae4f676ce9f871b"),
+    '1': ObjectId("654a46be9ae4f676ce9f871c"),
+    '2': ObjectId("654a46be9ae4f676ce9f871d")
+  }
+}
+harsh> db.MyCollection.find()
+[
+  {
+    _id: ObjectId("654a46be9ae4f676ce9f871b"),
+    name: 'Harshal',
+    roll: 3
+  },
+  { _id: ObjectId("654a46be9ae4f676ce9f871c"), name: 'Harsh', roll: 4 },
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.Mycollection.deleteOne({roll:4})
+{ acknowledged: true, deletedCount: 0 }
+harsh> db.MyCollection.find()
+[
+  {
+    _id: ObjectId("654a46be9ae4f676ce9f871b"),
+    name: 'Harshal',
+    roll: 3
+  },
+  { _id: ObjectId("654a46be9ae4f676ce9f871c"), name: 'Harsh', roll: 4 },
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.Mycollection.delete({roll:4})
+TypeError: db.Mycollection.delete is not a function
+harsh> db.Mycollection.deleteMany({roll:4})
+{ acknowledged: true, deletedCount: 0 }
+harsh> db.Mycollection.deleteMany({_id:654a46be9ae4f676ce9f871c});
+Uncaught:
+SyntaxError: Identifier directly after number. (1:35)
+
+> 1 | db.Mycollection.deleteMany({_id:654a46be9ae4f676ce9f871c});
+    |                                    ^
+  2 |
+
+harsh> db.Mycollection.deleteMany({_id:"654a46be9ae4f676ce9f871c"});
+{ acknowledged: true, deletedCount: 0 }
+harsh> db.MyCollection.deleteOne({roll:4})
+{ acknowledged: true, deletedCount: 1 }
+harsh> db.MyCollection.find()
+[
+  {
+    _id: ObjectId("654a46be9ae4f676ce9f871b"),
+    name: 'Harshal',
+    roll: 3
+  },
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.MyCollection.update({roll:3},{$set:{name:'sundar'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+harsh> db.MyCollection.find()
+[
+  {
+    _id: ObjectId("654a46be9ae4f676ce9f871b"),
+    name: 'sundar',
+    roll: 3
+  },
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.MyCollection.find({roll:{$gte:1}})
+[
+  {
+    _id: ObjectId("654a46be9ae4f676ce9f871b"),
+    name: 'sundar',
+    roll: 3
+  },
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.MyCollection.find({roll:{$gte:5}})
+[
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
+harsh> db.MyCollection.find({roll:{$eq:5}})
+[
+  { _id: ObjectId("654a46be9ae4f676ce9f871d"), name: 'karan', roll: 5 }
+]
