@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Calculator</title>
+
+<link rel="stylesheet" href="calc.css">
+<script>
+
+function call()
+{
+	var n1=parseInt(document.f1.t1.value);
+	var n2=parseInt(document.f1.t2.value);
+	var d=document.f1.c1.value;
+	
+	if(d=="add")
+	{
+		var sum=n1+n2;
+		document.f1.t3.value = sum;
+	} 
+
+	if(d=="sub")
+	{
+		var sum=n1-n2;
+		document.f1.t3.value = sum;
+	}
+	
+	if(d=="mul")
+	{
+		var sum=n1*n2;
+		document.f1.t3.value = sum;
+	}
+
+	if(d=="div")
+	{
+		var sum=n1/n2;
+		document.f1.t3.value = sum;
+	}
+}
+</script>
+</head>
+
+<body>
+	<form name="f1">
+		<h1 align="center">Calculator</h1>
+
+		<div class="inputbox">
+		Enter 1st No:<input type="text" name="t1"><br>
+		Enter 2nd No:<input type="text" name="t2"><br>
+		</div>
+		
+		<div class="operations">
+		<input type ="radio"  name="c1" value="add">Addition<br>
+		
+		<input type ="radio"  name="c1" value="sub">Substraction<br>
+		
+		<input type ="radio"  name="c1" value="mul">Multiplication<br>
+		
+		<input type ="radio"  name="c1" value="div">Division<br>
+		</div>
+
+		<input type="button" value ="calculate" onclick="call()"><br><br>
+		
+		Result:<input type="text" name="t3" id="result">
+	</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    
+    background-color: grey;
+    width: 50%;
+    text-align: center;
+}
+
+h1{
+    padding-top: 30px;
+}
+
+.inputbox{
+    margin: 30px;
+    line-height: 50px;
+}
+
+.operations{
+    margin: 20px;
+    line-height: 40px;
+}
+
+#result{
+    margin-bottom: 30px;
+}

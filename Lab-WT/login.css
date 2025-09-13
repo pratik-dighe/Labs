@@ -1,0 +1,37 @@
+
+body{
+    /* background-color: grey; */
+    font-family: sans-serif;
+    background-image: url(a.jpg);
+}
+h1{
+    font-weight: 300;
+    text-align: center;
+}
+form{
+    background: #fff;
+  width: 500px;
+  margin: 65px auto;
+  border-radius: 10px;
+}
+
+.inputbox{
+
+    padding: 15px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+button{
+    width: 100%;
+  border: none;
+  padding: 18px;
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  background:black ;
+  color:#fff;
+  transition: all .3s;
+  border-radius: 20px;
+}
